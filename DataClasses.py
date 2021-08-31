@@ -2,34 +2,56 @@
 # Title: Data Classes
 # Description: A module of data classes
 # ChangeLog (Who,When,What):
-# LValderrama, 8.24.2021, created File
-# LValderrama, 8.26.2021, tested the script
+# LValderrama, 8.30.2021, created File
 # -------------------------------------------------------------------------------------------------------------------- #
 
 if __name__ == "__main__":
     raise Exception("This file is not meant to ran by itself")
 
 
-class Person(object):  # Inherits from object
-    """Stores data about a persons:
+class Employee(object):  # Inherits from object
+    """Stores data about an Employee:
 
     properties:
-        first_name: (string) with the person's first name
+        employee_id: (int) with the employee's ID
 
-        last_name: (string) with the person's last name
+        first_name: (string) with the employee's first name
+
+        last_name: (string) with the employee's last name
+
+        project_name: (string) with the name of the project assigned to the employee
+
+        full_date: (string) with the date
+
+        hours_worked: (string) with the hours worked
     methods:
         to_string() returns comma separated product data (alias for __str__())
     changelog: (When,Who,What)
-        LValderrama,8.27.2021,Created Class
+        LValderrama,8.30.2021,Created Class
     """
 
-    # -- Constructor --
-    def __init__(self, first_name, last_name):
-        # -- Attributes --
+    def __init__(self, employee_id, first_name, last_name, project_name, full_date, hours_worked):
+        # Attributes
+
+        self.__employee_id = employee_id
         self.__first_name = first_name
         self.__last_name = last_name
+        self.__project_name = project_name
+        self.__full_date = full_date
+        self.__hours_worked = hours_worked
 
-    # -- Properties --
+    # --Properties--
+    @property
+    def employee_id(self):
+        return self.__employee_id
+
+    @employee_id.setter
+    def employee_id(self, value):
+        if str(value).isnumeric():
+            self.__last_name = value
+        else:
+            raise Exception("IDs must be numbers")
+
     @property
     def first_name(self):
         return str(self.__first_name).title()
@@ -52,59 +74,45 @@ class Person(object):  # Inherits from object
         else:
             raise Exception("Names cannot be numbers")
 
-    # -- Methods --
+    @property
+    def project_name(self):
+        return self.__project_name
+
+    @project_name.setter
+    def project_name(self, value):
+        if str(value).isalnum():
+            self.__project_name = value
+        else:
+            raise Exception("Projects may or may not be numbers")
+
+    @property
+    def full_date(self):
+        return self.__full_date
+
+    @full_date.setter
+    def full_date(self, value):
+        if str(value).isnumeric():
+            self.__full_date = value
+        else:
+            raise Exception("Please present dates as mm/dd/yyyy")
+
+    @property
+    def hours_worked(self):
+        return self.__hours_worked
+
+    @hours_worked.setter
+    def hours_worked(self, value):
+        if float(value):
+            self.__hours_worked = value
+        else:
+            raise Exception("Hours worked must be numbers")
+
+    # --Methods--
     def to_string(self):
         """ Explicitly returns a string with this object's data """
         return self.__str__()
 
     def __str__(self):
-        """ Implicitly returns a string with this object's data """
-        return self.first_name + ',' + self.last_name
-
-
-class Employee(Person):  # Inherits from Person
-    """Stores data about an Employee:
-
-    properties:
-        employee_id: (int) with the employee's ID
-
-        first_name: (string) with the employee's first name
-
-        last_name: (string) with the employee's last name
-    methods:
-        to_string() returns comma separated product data (alias for __str__())
-    changelog: (When,Who,What)
-        LValderrama,8.27.2021,Created Class
-    """
-
-    def __init__(self, employee_id, first_name, last_name):
-        # Attributes
-        super().__init__(first_name, last_name)
-        self.__employee_id = employee_id
-        self.first_name = first_name
-        self.last_name = last_name
-
-    # --Properties--
-    @property
-    def employee_id(self):
-        return self.__employee_id
-
-    @employee_id.setter
-    def employee_id(self, value):
-        if str(value).isnumeric():
-            self.__last_name = value
-        else:
-            raise Exception("IDs must be numbers")
-
-    # --Methods--
-    def to_string(self):  # Overrides the original method (polymorphic)
-        """ Explicitly returns a string with this object's data """
-        # Linking to self.__str__() does not work with inheritance
-        data = super().__str__()  # get data from parent(super) class
-        return str(self.employee_id) + ',' + data
-
-    def __str__(self):  # Overrides the original method (polymorphic)
         """ Implicitly returns field data """
-        data = super().__str__()  # get data from parent(super) class
-        return str(self.employee_id) + ',' + data
-    # --End of Class --
+        return self.__employee_id + ',' + self.first_name + ',' + self.last_name + ',' + self.project_name + ',' + self.full_date + ',' + self.hours_worked
+        # --End of Class --

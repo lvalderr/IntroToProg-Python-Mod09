@@ -2,12 +2,12 @@
 # Title: Main Module
 # Description: A module for testing
 # Change Log: (Who, When, What)
-# LValderrama, 8.27.2021, created Main Module
+# LValderrama, 8.30.2021, created Main Module
 # LValderrama, 8.28.2021, added imported processing and IO modules, while loop.
 # ---------------------------------------------------------------------------------------------------------------------#
 
 # Objective:
-# 1. The Assignment09.py script is designed to:
+# 1. The Main.py script is designed to:
 #       a. Present a menu of choices for the user to select from.
 #       b. Execute the program based on the choice made by the user.
 #       c. Use Try/Catch Error Handling.
@@ -19,7 +19,7 @@
 # Step 1: Declare variables
 
 strChoice = ""  # Captures the user option selection
-strFileName = 'EmployeeData.txt'  # The name of the data file
+strFileName = 'EmployeeProjectHours.csv'  # The name of the data file
 lstTable = []  # A list that acts as a 'table' of rows
 
 # Step 2: Import Module ---------------------------------------------------------------------------------------------- #
@@ -37,7 +37,7 @@ else:
 lstFileData = Fp.read_data_from_file(strFileName)
 lstTable.clear()
 for line in lstFileData:
-    lstTable.append(Emp(line[0], line[1], line[2].strip()))
+    lstTable.append(Emp(line[0], line[1], line[2], line[3], line[4], line[5].strip()))
 
 # Step 4: Calling the functions from DataClasses, IOClasses, ProcessingClasses --------------------------------------- #
 while True:

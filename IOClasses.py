@@ -2,8 +2,7 @@
 # Title: IO Classes
 # Description: A module of IO classes
 # ChangeLog (Who,When,What):
-# LValderrama, 8.24.2021, created File
-# LValderrama, 8.26.2021, tested the script
+# LValderrama, 8.30.2021, created File
 # -------------------------------------------------------------------------------------------------------------------- #
 
 
@@ -24,7 +23,7 @@ class EmployeeIO:
         input_employee_data():
 
     changelog: (When,Who,What)
-        LValderrama,8.27.2021,Created Class:
+        LValderrama,8.30.2021,Created Class:
     """
 
     @staticmethod
@@ -57,7 +56,7 @@ class EmployeeIO:
         """
         print("******* The current items employees are: *******")
         for row in list_of_rows:
-            print(str(row.employee_id) + "," + row.first_name + "," + row.last_name)
+            print(str(row.employee_id) + "," + row.first_name + row.last_name + "," + row.project_name + "," + row.full_date + "," + str(row.hours_worked))
         print("*******************************************")
         print()  # Add an extra line for looks
 
@@ -72,8 +71,11 @@ class EmployeeIO:
             employee_id = (input("What is the employee Id? - ").strip())
             first_name = str(input("What is the employee First Name? - ").strip())
             last_name = str(input("What is the employee Last Name? - ").strip())
+            project_name = str(input("What is the Project Name? - ").strip())
+            full_date = str(input("What is the date? - ").strip())
+            hours_worked = str(input("What is the Number of Hours Worked? - ").strip())
             print()  # Add an extra line for looks
-            emp = DC.Employee(employee_id, first_name, last_name)
+            emp = DC.Employee(employee_id, first_name, last_name, project_name, full_date, hours_worked)
         except Exception as e:
             print(e)
         return emp

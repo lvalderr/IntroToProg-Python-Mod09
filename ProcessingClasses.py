@@ -3,7 +3,6 @@
 # Description: A module of multiple processing classes
 # ChangeLog (Who,When,What):
 # LValderrama, 8.24.2021, created File
-# LValderrama, 8.26.2021, tested the script
 # -------------------------------------------------------------------------------------------------------------------- #
 
 if __name__ == "__main__":
